@@ -39,6 +39,7 @@ if ( ! class_exists( 'Download_Attachments' ) ) :
 		public $capability = 'manage_download_attachments';
 		public $columns = array();
 		public $display_styles = array();
+		public $archives = array();
 		public $options = array();
 		public $defaults = array(
 			'general'	 => array(
@@ -325,6 +326,9 @@ if ( ! class_exists( 'Download_Attachments' ) ) :
 				'table'		=> __( 'Table', 'download-attachments' ),
 				'dynatable'	=> __( 'Dynamic Table', 'download-attachments' ),
 				// 'posts'		=> __( 'Posts', 'download-attachments' )
+			);
+			$this->archives = array(
+
 			);
 		}
 
