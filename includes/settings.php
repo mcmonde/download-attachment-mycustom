@@ -314,6 +314,16 @@ class Download_Attachments_Settings
 		echo '
 		<div id="da_general_display_archives"
 		<fieldset>';
+
+		foreach ( $this->choices as $val => $trans )
+		{
+			echo '
+			<input id="da_general_display_archives-' . $val . '" type="radio" name="da_general_display_archives[display_archives]" value="' . esc_attr( $val ) . '" ' . checked( ($val === 'yes' ? true : false ), Download_Attachments()->options['display_archives'], false ) . '/><label for="da_general_display_archives-' . $val . '">' . $trans . '</label>';
+		}
+		echo '
+			<p class="description">' . __( 'Select if you\'d like to display the archive.', 'download-attachments' ) . '</p>
+			</fieldset>
+		</div>';
 	}
 
 	public function da_general_css_style()
