@@ -47,14 +47,14 @@ extract( $args );
 			<?php endif; ?>
 
 			<?php if ( $display_date === 1 ) : ?>
-                <th class="attachment-date"><?php echo __( 'Date added', 'download-attachments' ); ?></th>
+                <th class="attachment-date"><?php echo __( 'Date', 'download-attachments' ); ?></th>
 			<?php endif; ?>
-
-			<th class="attachment-title"><?php echo __( 'Title', 'download-attachments' ); ?></th>
 
 			<?php if ( $display_caption === 1 || ( $display_description === 1 && $use_desc_for_title === 0 ) ) : ?>
-				<th class="attachment-about"><?php echo __( 'Description', 'download-attachments' ); ?></th>
+                <th class="attachment-about"><?php echo __( 'Title', 'download-attachments' ); ?></th>
 			<?php endif; ?>
+
+			<th class="attachment-title"><?php echo __( 'Download', 'download-attachments' ); ?></th>
 
 			<?php if ( $display_user === 1 ) : ?>
 				<th class="attachment-user"><?php echo __( 'Added by', 'download-attachments' ); ?></th>
@@ -65,7 +65,7 @@ extract( $args );
 			<?php endif; ?>
 
 			<?php if ( $display_count === 1 ) : ?>
-				<th class="attachment-downloads"><?php echo __( 'Downloads', 'download-attachments' ); ?></th>
+				<th class="attachment-downloads"><?php echo __( 'Downloaded', 'download-attachments' ); ?></th>
 			<?php endif; ?>
 
 		</thead>
@@ -95,24 +95,6 @@ extract( $args );
                     <td class="attachment-date"><?php echo date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( $attachment['date_added'] ) ); ?></td>
 				<?php endif; ?>
 
-				<td class="attachment-title">
-
-					<?php if ( $display_icon === 1 ) : ?>
-						<img class="attachment-icon" src="<?php echo $attachment['icon_url']; ?>" alt="<?php echo $attachment['type']; ?>" />
-					<?php endif; ?>
-
-					<?php if ( $link_before !== '' ) : ?>
-						<span class="attachment-link-before"><?php echo $link_before; ?></span>
-					<?php endif; ?>
-
-					<a href="<?php echo da_get_download_attachment_url( $attachment['ID'] ); ?>" class="attachment-link" title="<?php echo esc_html( $attachment_title ); ?>"><?php echo $attachment_title; ?></a>
-
-					<?php if ( $link_after !== '' ) : ?>
-						<span class="attachment-link-after"><?php echo $link_after; ?></span>
-					<?php endif; ?>
-
-				</td>
-
 				<?php if ( $display_caption === 1 || ( $display_description === 1 && $use_desc_for_title === 0 ) ) : ?>
 					<td class="attachment-about">
 				<?php endif; ?>
@@ -124,6 +106,24 @@ extract( $args );
 				<?php if ( $display_description === 1 && $use_desc_for_title === 0 && $attachment['description'] !== '' ) : ?>
 					<span class="attachment-description"><?php echo $attachment['description']; ?></span><br />
 				<?php endif; ?>
+
+                <td class="attachment-title">
+
+					<?php if ( $display_icon === 1 ) : ?>
+                        <img class="attachment-icon" src="<?php echo $attachment['icon_url']; ?>" alt="<?php echo $attachment['type']; ?>" />
+					<?php endif; ?>
+
+					<?php if ( $link_before !== '' ) : ?>
+                        <span class="attachment-link-before"><?php echo $link_before; ?></span>
+					<?php endif; ?>
+
+                    <a href="<?php echo da_get_download_attachment_url( $attachment['ID'] ); ?>" class="attachment-link" title="<?php echo esc_html( $attachment_title ); ?>"><?php echo $attachment_title; ?></a>
+
+					<?php if ( $link_after !== '' ) : ?>
+                        <span class="attachment-link-after"><?php echo $link_after; ?></span>
+					<?php endif; ?>
+
+                </td>
 
 				<?php if ( $display_caption === 1 || ( $display_description === 1 && $use_desc_for_title === 0 ) ) : ?>
 					</td>
